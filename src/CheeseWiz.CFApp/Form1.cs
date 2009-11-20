@@ -15,5 +15,10 @@ namespace CheeseWiz.CFApp
 		{
 			InitializeComponent();
 		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show(Properties.Resources.MyMessage);
+		}
 	}
 }

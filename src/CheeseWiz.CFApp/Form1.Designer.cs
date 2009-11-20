@@ -29,23 +29,33 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.mainMenu1 = new System.Windows.Forms.MainMenu();
+			this.button1 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
+			// 
+			// button1
+			// 
+			resources.ApplyResources(this.button1, "button1");
+			this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
+			this.button1.Name = "button1";
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.AutoScroll = true;
-			this.ClientSize = new System.Drawing.Size(238, 215);
+			resources.ApplyResources(this, "$this");
+			this.Controls.Add(this.button1);
 			this.Menu = this.mainMenu1;
 			this.Name = "Form1";
-			this.Text = "Form1";
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
+
+		private System.Windows.Forms.Button button1;
 	}
 }
 
