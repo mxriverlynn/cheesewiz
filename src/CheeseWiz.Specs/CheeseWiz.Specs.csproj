@@ -55,8 +55,16 @@
   <ItemGroup>
     <Compile Include="BDD\ContextSpecification.cs" />
     <Compile Include="BDD\NunitExtensions.cs" />
+    <Compile Include="InfParsingSpecs.cs" />
     <Compile Include="InfRepairSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleInfContents.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CheeseWiz\CheeseWiz.csproj">
+      <Project>{058258C1-3F0C-4448-80D8-C8651CDD7696}</Project>
+      <Name>CheeseWiz</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
