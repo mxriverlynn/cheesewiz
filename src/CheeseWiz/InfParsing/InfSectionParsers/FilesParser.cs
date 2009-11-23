@@ -1,4 +1,6 @@
-namespace CheeseWiz.InfSectionParsers
+using CheeseWiz.InfModel;
+
+namespace CheeseWiz.InfParsing.InfSectionParsers
 {
 	public class FilesParser : IInfSectionParser
 	{

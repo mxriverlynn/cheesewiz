@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
 
-namespace CheeseWiz
+namespace CheeseWiz.InfModel
 {
 	public class Files
 	{

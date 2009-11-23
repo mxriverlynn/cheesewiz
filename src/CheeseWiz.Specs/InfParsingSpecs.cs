@@ -1,4 +1,5 @@
-using System.Diagnostics;
+using CheeseWiz.InfModel;
+using CheeseWiz.InfParsing;
 using CheeseWiz.Specs.BDD;
 using NUnit.Framework;
 

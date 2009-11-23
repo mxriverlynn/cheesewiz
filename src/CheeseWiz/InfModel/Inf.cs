@@ -1,6 +1,4 @@
-using System;
-
-namespace CheeseWiz
+namespace CheeseWiz.InfModel
 {
 	public class Inf
 	{

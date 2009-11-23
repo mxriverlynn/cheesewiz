@@ -1,4 +1,4 @@
-namespace CheeseWiz
+namespace CheeseWiz.InfParsing
 {
 	public enum InfSections
 	{

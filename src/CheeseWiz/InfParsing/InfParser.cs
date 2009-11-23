@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using CheeseWiz.InfSectionParsers;
+using CheeseWiz.InfModel;
+using CheeseWiz.InfParsing.InfSectionParsers;
 
-namespace CheeseWiz
+namespace CheeseWiz.InfParsing
 {
 	public class InfParser
 	{

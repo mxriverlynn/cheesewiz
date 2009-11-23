@@ -1,4 +1,4 @@
-namespace CheeseWiz
+namespace CheeseWiz.InfModel
 {
 	public class FileSection: InfSection
 	{

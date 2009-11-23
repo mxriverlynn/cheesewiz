@@ -45,24 +45,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DestinationDirs.cs" />
-    <Compile Include="DestinationDirsParser.cs" />
-    <Compile Include="Files.cs" />
-    <Compile Include="FileSection.cs" />
-    <Compile Include="InfSectionParsers\FilesParser.cs" />
-    <Compile Include="InfSectionParsers\GenericSectionParser.cs" />
-    <Compile Include="Inf.cs" />
-    <Compile Include="InfParser.cs" />
-    <Compile Include="InfSection.cs" />
-    <Compile Include="IInfSectionParser.cs" />
-    <Compile Include="InfSections.cs" />
+    <Compile Include="InfModel\DestinationDirs.cs" />
+    <Compile Include="InfParsing\InfSectionParsers\DestinationDirsParser.cs" />
+    <Compile Include="InfModel\Files.cs" />
+    <Compile Include="InfModel\FileSection.cs" />
+    <Compile Include="InfRepairing\InfRepairer.cs" />
+    <Compile Include="InfParsing\InfSectionParsers\FilesParser.cs" />
+    <Compile Include="InfParsing\InfSectionParsers\GenericSectionParser.cs" />
+    <Compile Include="InfModel\Inf.cs" />
+    <Compile Include="InfParsing\InfParser.cs" />
+    <Compile Include="InfModel\InfSection.cs" />
+    <Compile Include="InfParsing\IInfSectionParser.cs" />
+    <Compile Include="InfParsing\InfSections.cs" />
+    <Compile Include="InfRepairing\IResourceFileProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SectionName.cs" />
-    <Compile Include="SourceDisksFiles.cs" />
-    <Compile Include="InfSectionParsers\SourceDisksFilesParser.cs" />
-    <Compile Include="SourceDisksNames.cs" />
-    <Compile Include="InfSectionParsers\SourceDisksNamesParser.cs" />
+    <Compile Include="InfModel\SectionName.cs" />
+    <Compile Include="InfModel\SourceDisksFiles.cs" />
+    <Compile Include="InfParsing\InfSectionParsers\SourceDisksFilesParser.cs" />
+    <Compile Include="InfModel\SourceDisksNames.cs" />
+    <Compile Include="InfParsing\InfSectionParsers\SourceDisksNamesParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

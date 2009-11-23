@@ -1,4 +1,6 @@
-namespace CheeseWiz
+using CheeseWiz.InfModel;
+
+namespace CheeseWiz.InfParsing
 {
 	public interface IInfSectionParser
 	{
