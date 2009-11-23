@@ -46,6 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DestinationDirs.cs" />
+    <Compile Include="DestinationDirsParser.cs" />
+    <Compile Include="Files.cs" />
+    <Compile Include="FileSection.cs" />
+    <Compile Include="InfSectionParsers\FilesParser.cs" />
     <Compile Include="InfSectionParsers\GenericSectionParser.cs" />
     <Compile Include="Inf.cs" />
     <Compile Include="InfParser.cs" />
@@ -54,6 +58,7 @@
     <Compile Include="InfSections.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SectionName.cs" />
     <Compile Include="SourceDisksFiles.cs" />
     <Compile Include="InfSectionParsers\SourceDisksFilesParser.cs" />
     <Compile Include="SourceDisksNames.cs" />

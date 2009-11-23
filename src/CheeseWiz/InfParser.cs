@@ -34,10 +34,18 @@ namespace CheeseWiz
 		private IInfSectionParser GetSectionHandler(InfSection section)
 		{
 			IInfSectionParser parser;
-			if (registeredInfSectionParsers.ContainsKey(section.Section))
-				parser = registeredInfSectionParsers[section.Section];
+			
+			string key;
+			if (section.Section.HasType)
+				key = section.Section.Type;
+			else
+				key = section.Section.Name;
+
+			if (registeredInfSectionParsers.ContainsKey(key))
+				parser = registeredInfSectionParsers[key];
 			else
 				parser = new GenericSectionParser();
+
 			return parser;
 		}
 
@@ -53,7 +61,8 @@ namespace CheeseWiz
 				string section = splitContents[i];
 				string content = splitContents[i + 1];
 
-				infSections.Add(new InfSection(section, content));
+				var infSection = new InfSection(section, content);
+				infSections.Add(infSection);
 			}
 			return infSections;
 		}
@@ -62,6 +71,8 @@ namespace CheeseWiz
 		{
 			registeredInfSectionParsers[InfSections.SourceDisksNames.ToString()] = new SourceDisksNamesParser();
 			registeredInfSectionParsers[InfSections.SourceDisksFiles.ToString()] = new SourceDisksFilesParser();
+			registeredInfSectionParsers[InfSections.DestinationDirs.ToString()] = new DestinationDirsParser();
+			registeredInfSectionParsers[InfSections.Files.ToString()] = new FilesParser();
 		}
 	}
 }

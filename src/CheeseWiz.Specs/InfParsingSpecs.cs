@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using CheeseWiz.Specs.BDD;
 using NUnit.Framework;
 
@@ -47,7 +48,7 @@ namespace CheeseWiz.Specs
 			[Test]
 			public void it_should_find_the_common_files_sections()
 			{
-				
+				inf.Files["Common1"].ShouldNotBeNull();
 			}
 		}
 	}
