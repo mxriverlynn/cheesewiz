@@ -11,13 +11,19 @@ namespace CheeseWiz.InfRepairing
 			ResourceFileProcessor = resourceFileProcessor;
 		}
 
-		public Inf Repair(Inf inf)
+		public void Repair(Inf inf)
 		{
-			ResourceFileProcessor.RenameFiles();
+			foreach (SourceFile resourceFile in inf.SourceDisksFiles.GetResourceFiles())
+			{
+				ResourceFolder resourceFolder = inf.SourceDisksNames.GetFolderByReferenceNumber(resourceFile.ReferenceNumber);
+				SourceFile renamedFile = ResourceFileProcessor.RenameFile(resourceFolder.Foldername, resourceFile);
+				resourceFile.Filename = renamedFile.Filename;
 
+				//FileSection fileSection = inf.Files[resourceFolder.ResourceName];
 
+				
 
-			return null;
+			}
 		}
 	}
 }

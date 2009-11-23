@@ -58,6 +58,8 @@
     <Compile Include="InfParsing\IInfSectionParser.cs" />
     <Compile Include="InfParsing\InfSections.cs" />
     <Compile Include="InfRepairing\IResourceFileProcessor.cs" />
+    <Compile Include="InfModel\SourceFile.cs" />
+    <Compile Include="InfModel\ResourceFolder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InfModel\SectionName.cs" />

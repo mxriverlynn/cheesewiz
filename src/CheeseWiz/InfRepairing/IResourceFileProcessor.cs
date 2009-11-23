@@ -1,7 +1,9 @@
+using CheeseWiz.InfModel;
+
 namespace CheeseWiz.InfRepairing
 {
 	public interface IResourceFileProcessor
 	{
-		void RenameFiles();
+		SourceFile RenameFile(string folder, SourceFile file);
 	}
 }

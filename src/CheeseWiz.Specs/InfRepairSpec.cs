@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.IO;
 using CheeseWiz.InfModel;
 using CheeseWiz.InfParsing;
@@ -43,19 +44,16 @@ namespace CheeseWiz.Specs
 			[Test]
 			public void it_should_rename_the_localized_resource_files()
 			{
-				resourceFileProcessor.AssertWasCalled(rfp => rfp.RenameFiles());
+				resourceFileProcessor.AssertWasCalled(rfp => rfp.RenameFile(null, null), mo => mo
+					.IgnoreArguments()
+					.Repeat.AtLeastOnce()
+				);
 			}
 
 			[Test]
-			public void it_should_adjust_the_source_disk_folder_names()
+			public void it_should_adjust_the_source_disk_file_names()
 			{
-				
-			}
-
-			[Test]
-			public void it_should_adjust_the_source_disk_files()
-			{
-				
+				inf.SourceDisksFiles.GetResourceFiles()[1].Filename.ShouldEqual("CheeseWiz.CFApp.es.resources.dll");
 			}
 
 			[Test]
