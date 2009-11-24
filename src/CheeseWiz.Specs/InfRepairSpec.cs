@@ -22,8 +22,18 @@ namespace CheeseWiz.Specs
 				protected override void EstablishContext()
 				{
 					inf = GetInf();
-					resourceFileProcessor = Mock<IResourceFileProcessor>();
+					resourceFileProcessor = GetResourceFileProcessor();
 					SUT = new InfRepairer(resourceFileProcessor);
+				}
+
+				private IResourceFileProcessor GetResourceFileProcessor()
+				{
+					var processor = Mock<IResourceFileProcessor>();
+					processor.Stub(p => p.RenameFile(null, null))
+						.IgnoreArguments()
+						.Return(new SourceFile("CheeseWiz.CFApp.es.resources.dll", "2"))
+						.Repeat.Once();
+					return processor;
 				}
 
 				private Inf GetInf()
@@ -53,7 +63,7 @@ namespace CheeseWiz.Specs
 			[Test]
 			public void it_should_adjust_the_source_disk_file_names()
 			{
-				inf.SourceDisksFiles.GetResourceFiles()[1].Filename.ShouldEqual("CheeseWiz.CFApp.es.resources.dll");
+				inf.SourceDisksFiles.GetResourceFiles()[0].Filename.ShouldEqual("CheeseWiz.CFApp.es.resources.dll");
 			}
 
 			[Test]

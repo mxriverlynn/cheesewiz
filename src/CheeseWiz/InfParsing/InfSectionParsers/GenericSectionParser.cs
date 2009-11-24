@@ -6,7 +6,7 @@ namespace CheeseWiz.InfParsing.InfSectionParsers
 	{
 		public void AddSectionToInf(Inf inf, InfSection section)
 		{
-			
+			inf.AddSection(section);
 		}
 	}
 }

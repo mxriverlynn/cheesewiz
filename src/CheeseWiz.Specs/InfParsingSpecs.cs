@@ -51,6 +51,18 @@ namespace CheeseWiz.Specs
 			{
 				inf.Files["Common1"].ShouldNotBeNull();
 			}
+
+			[Test]
+			public void it_should_find_the_CEDevice_section()
+			{
+				inf.GetSection("CEDevice").ShouldNotBeNull();
+			}
+
+			[Test]
+			public void it_should_not_find_a_non_existent_section()
+			{
+				inf.GetSection("this section name does not exist").ShouldBeNull();
+			}
 		}
 	}
 }
