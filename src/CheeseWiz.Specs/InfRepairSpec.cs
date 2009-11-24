@@ -62,7 +62,7 @@ namespace CheeseWiz.Specs
 			[Test]
 			public void it_should_adjust_the_source_disk_file_names()
 			{
-				inf.SourceDisksFiles.GetResourceFiles()[0].Filename.ShouldEqual("CheeseWiz.CFApp.es.resources.dll");
+				inf.SourceDisksFiles.Content.ShouldContain("\"CheeseWiz.CFApp.es.resources.dll\"=2");
 			}
 
 			[Test]

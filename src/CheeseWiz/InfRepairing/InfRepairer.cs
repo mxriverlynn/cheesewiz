@@ -17,11 +17,10 @@ namespace CheeseWiz.InfRepairing
 			{
 				ResourceFolder resourceFolder = inf.SourceDisksNames.GetFolderByReferenceNumber(resourceFile.ReferenceNumber);
 				SourceFile renamedFile = ResourceFileProcessor.RenameFile(resourceFolder.FolderName, resourceFile);
-				
 				FileSection fileSection = inf.Files[resourceFolder.ResourceName];
-				fileSection.RenameFileSource(resourceFile.Filename, renamedFile.Filename);
 				
-				resourceFile.Filename = renamedFile.Filename;
+				fileSection.RenameFileSource(resourceFile.Filename, renamedFile.Filename);
+				inf.SourceDisksFiles.RenameFile(resourceFile.ReferenceNumber, renamedFile.Filename);
 			}
 		}
 	}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Linq;
@@ -7,6 +8,7 @@ namespace CheeseWiz.InfModel
 	public class SourceDisksFiles: InfSection
 	{
 		private IList<SourceFile> SourceFiles { get; set; }
+		
 
 		public SourceDisksFiles(InfSection section): base(section.Section, section.Content)
 		{
@@ -32,6 +34,12 @@ namespace CheeseWiz.InfModel
 		{
 			IEnumerable<SourceFile> files = SourceFiles.Where(f => f.Filename.Contains(".resources.dll"));
 			return new List<SourceFile>(files);
+		}
+
+		public void RenameFile(string referenceNumber, string newFilename)
+		{			
+			var regex = new Regex(@"\""(?<filename>.*?)\""=" + referenceNumber, RegexOptions.Multiline);
+			Content = regex.Replace(Content, "\"" + newFilename + "\"=" + referenceNumber);
 		}
 	}
 }
