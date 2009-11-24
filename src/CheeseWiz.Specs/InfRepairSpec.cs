@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.IO;
 using CheeseWiz.InfModel;
 using CheeseWiz.InfParsing;
 using CheeseWiz.InfRepairing;
@@ -69,7 +68,7 @@ namespace CheeseWiz.Specs
 			[Test]
 			public void it_should_adjust_the_file_destinations()
 			{
-				
+				inf.Files["Common2"].Content.ShouldContain("\"CheeseWiz.CFApp.resources.dll\",\"CheeseWiz.CFApp.es.resources.dll\",,0");
 			}
 		}
 	}

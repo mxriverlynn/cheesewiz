@@ -2,7 +2,7 @@ namespace CheeseWiz.InfModel
 {
 	public class InfSection
 	{
-		public string Content { get; private set; }
+		public string Content { get; protected set; }
 
 		public SectionName Section { get; private set; }
 
