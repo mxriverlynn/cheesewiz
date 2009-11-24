@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace CheeseWiz.InfModel
 {
@@ -10,8 +10,6 @@ namespace CheeseWiz.InfModel
 		public SourceDisksNames SourceDisksNames { get; set; }
 
 		public SourceDisksFiles SourceDisksFiles { get; set; }
-
-		public DestinationDirs DestinationDirs { get; set; }
 
 		public Files Files { get; private set; }
 
@@ -33,6 +31,17 @@ namespace CheeseWiz.InfModel
 				section = sections[sectionName];
 			}
 			return section;
+		}
+
+		public string RebuildInf()
+		{
+			StringBuilder output = new StringBuilder();
+			foreach(InfSection section in sections.Values)
+			{
+				output.Append(string.Format("[{0}]", section.Section));
+				output.Append(section.Content);
+			}
+			return output.ToString();
 		}
 	}
 }

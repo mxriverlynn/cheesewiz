@@ -72,7 +72,6 @@ namespace CheeseWiz.InfParsing
 		{
 			registeredInfSectionParsers[InfSections.SourceDisksNames.ToString()] = new SourceDisksNamesParser();
 			registeredInfSectionParsers[InfSections.SourceDisksFiles.ToString()] = new SourceDisksFilesParser();
-			registeredInfSectionParsers[InfSections.DestinationDirs.ToString()] = new DestinationDirsParser();
 			registeredInfSectionParsers[InfSections.Files.ToString()] = new FilesParser();
 		}
 	}

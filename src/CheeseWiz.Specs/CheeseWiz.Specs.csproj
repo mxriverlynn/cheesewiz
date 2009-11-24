@@ -56,7 +56,8 @@
     <Compile Include="BDD\ContextSpecification.cs" />
     <Compile Include="BDD\NunitExtensions.cs" />
     <Compile Include="InfParsingSpecs.cs" />
-    <Compile Include="InfRepairSpec.cs" />
+    <Compile Include="InfRebuildingSpecs.cs" />
+    <Compile Include="InfRepairSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleInfContents.cs" />
   </ItemGroup>

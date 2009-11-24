@@ -2,12 +2,14 @@ using CheeseWiz.InfModel;
 
 namespace CheeseWiz.InfParsing.InfSectionParsers
 {
-	public class SourceDisksNamesParser : IInfSectionParser
+	public class SourceDisksNamesParser: GenericSectionParser
 	{
-		public void AddSectionToInf(Inf inf, InfSection section)
+		public override void AddSectionToInf(Inf inf, InfSection section)
 		{
 			var sourceDisksNames = new SourceDisksNames(section);
 			inf.SourceDisksNames = sourceDisksNames;
+
+			base.AddSectionToInf(inf, sourceDisksNames);
 		}
 	}
 }

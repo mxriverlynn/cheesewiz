@@ -45,8 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InfModel\DestinationDirs.cs" />
-    <Compile Include="InfParsing\InfSectionParsers\DestinationDirsParser.cs" />
     <Compile Include="InfModel\Files.cs" />
     <Compile Include="InfModel\FileSection.cs" />
     <Compile Include="InfRepairing\InfRepairer.cs" />

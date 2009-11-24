@@ -8,7 +8,7 @@ using Rhino.Mocks;
 
 namespace CheeseWiz.Specs
 {
-	public class InfRepairSpec
+	public class InfRepairSpecs
 	{
 		public static class under
 		{
