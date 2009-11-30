@@ -35,6 +35,7 @@ namespace CheeseWiz.InfModel
 
 		public string RebuildInf()
 		{
+			
 			StringBuilder output = new StringBuilder();
 			foreach(InfSection section in sections.Values)
 			{

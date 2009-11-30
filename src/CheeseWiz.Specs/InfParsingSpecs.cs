@@ -1,5 +1,6 @@
 using CheeseWiz.InfModel;
 using CheeseWiz.InfParsing;
+using CheeseWiz.Logging;
 using CheeseWiz.Specs.BDD;
 using NUnit.Framework;
 
@@ -16,7 +17,8 @@ namespace CheeseWiz.Specs
 
 				protected override void EstablishContext()
 				{
-					SUT = new InfParser();
+					ILogger logger = Mock<ILogger>();
+					SUT = new InfParser(logger);
 				}
 			}
 		}

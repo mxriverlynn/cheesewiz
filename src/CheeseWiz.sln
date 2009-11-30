@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheeseWiz.CFApp", "CheeseWi
 EndProject
 Project("{B900F1C2-3D47-4FEC-85B3-04AAF18C3634}") = "CheeseWiz.CFApp.Installer", "CheeseWiz.CFApp.Installer\CheeseWiz.CFApp.Installer.vddproj", "{4FE42B4C-0D50-43CD-9DF3-65C7CE038956}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheeseWiz.Console", "CheeseWiz.Console\CheeseWiz.Console.csproj", "{C1145D77-151E-40F1-9630-CF571C223C25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheeseWiz.Logging", "CheeseWiz.Logging\CheeseWiz.Logging.csproj", "{3E1B5E95-D1FD-4211-AA61-0E447CED48E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{1BCAA3F9-0D03-4F6E-B2C0-B0C7DD92312C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{4FE42B4C-0D50-43CD-9DF3-65C7CE038956}.Debug|Any CPU.ActiveCfg = Debug
 		{4FE42B4C-0D50-43CD-9DF3-65C7CE038956}.Release|Any CPU.ActiveCfg = Release
+		{C1145D77-151E-40F1-9630-CF571C223C25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1145D77-151E-40F1-9630-CF571C223C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1145D77-151E-40F1-9630-CF571C223C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1145D77-151E-40F1-9630-CF571C223C25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E1B5E95-D1FD-4211-AA61-0E447CED48E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E1B5E95-D1FD-4211-AA61-0E447CED48E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E1B5E95-D1FD-4211-AA61-0E447CED48E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E1B5E95-D1FD-4211-AA61-0E447CED48E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

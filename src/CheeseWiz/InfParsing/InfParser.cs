@@ -2,15 +2,18 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using CheeseWiz.InfModel;
 using CheeseWiz.InfParsing.InfSectionParsers;
+using CheeseWiz.Logging;
 
 namespace CheeseWiz.InfParsing
 {
 	public class InfParser
 	{
+		private readonly ILogger _logger;
 		private readonly IDictionary<string, IInfSectionParser> registeredInfSectionParsers = new Dictionary<string, IInfSectionParser>();
 
-		public InfParser()
+		public InfParser(ILogger logger)
 		{
+			_logger = logger;
 			ConfigureInfSectionParsers();
 		}
 
@@ -47,6 +50,8 @@ namespace CheeseWiz.InfParsing
 			else
 				parser = new GenericSectionParser();
 
+			_logger.Debug("Handling INF Section [" + section.Section + "] With Section Parser '" + parser.GetType().Name + "'");
+
 			return parser;
 		}
 
@@ -55,12 +60,13 @@ namespace CheeseWiz.InfParsing
 			var regEx = new Regex(@"\[(?<section>.*?)\]", RegexOptions.Multiline);
 			string[] splitContents = regEx.Split(contents);
 
-
 			IList<InfSection> infSections = new List<InfSection>();
 			for (int i = 1; i <= splitContents.Length-1; i += 2)
 			{
 				string section = splitContents[i];
 				string content = splitContents[i + 1];
+
+				_logger.Debug("Found INF Section: " + section);
 
 				var infSection = new InfSection(section, content);
 				infSections.Add(infSection);

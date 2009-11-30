@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using CheeseWiz.InfModel;
 using CheeseWiz.InfRepairing;
 
-namespace CheeseWiz
+namespace CheeseWiz.Console
 {
 	internal class ResourceFileProcessor : IResourceFileProcessor
 	{

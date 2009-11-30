@@ -1,6 +1,7 @@
 using CheeseWiz.InfModel;
 using CheeseWiz.InfParsing;
 using CheeseWiz.InfRepairing;
+using CheeseWiz.Logging;
 using CheeseWiz.Specs.BDD;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -20,7 +21,8 @@ namespace CheeseWiz.Specs
 				{
 					SUT = GetInf();
 					resourceFileProcessor = GetResourceFileProcessor();
-					var infRepairer = new InfRepairer(resourceFileProcessor);
+					ILogger logger = Mock<ILogger>();
+					var infRepairer = new InfRepairer(resourceFileProcessor, logger);
 					infRepairer.Repair(SUT);
 				}
 
@@ -36,7 +38,8 @@ namespace CheeseWiz.Specs
 
 				private Inf GetInf()
 				{
-					var parser = new InfParser();
+					ILogger logger = Mock<ILogger>();
+					var parser = new InfParser(logger);
 					return parser.Parse(SampleInfContents.Sample);
 				}
 			}
