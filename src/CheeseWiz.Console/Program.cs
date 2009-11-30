@@ -64,6 +64,7 @@ namespace CheeseWiz.Console
 
 		private static void WriteInfFile(string infFile, Inf inf)
 		{
+			_logger.Info("Writing Repaired INF Out To '" + infFile + "'");
 			string infContents = inf.RebuildInf();
 			File.WriteAllText(infFile, infContents);
 		}
