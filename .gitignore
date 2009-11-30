@@ -13,3 +13,4 @@ codecoverage
 src/VersionInfo.cs
 Debug/
 Release/
+TestResult.xml

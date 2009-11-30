@@ -34,7 +34,7 @@ Albacore::AssemblyInfoTask.new(:assemblyinfo) do |asm|
 end
 
 desc "NUnit Test Runner Example"
-Albacore::NUnitTask.new(:nunit) do |nunit|
+Albacore::NUnitTestRunnerTask.new(:nunit) do |nunit|
 	nunit.log_level = :verbose
 	nunit.path_to_command = "Tools/NUnit-v2.5/nunit-console.exe"
 	nunit.assemblies << File.join(@output_path, "CheeseWiz.Specs.dll")
