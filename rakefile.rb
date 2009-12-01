@@ -13,7 +13,7 @@ Albacore::MSBuildTask.new(:msbuild) do |msb|
 	Dir.mkdir(@output_path) unless File.exists?(@output_path)
 	
 	msb.properties = {
-		:configuration => :Debug,
+		:configuration => :Release,
 		:OutputPath => @output_path
 	}
 	msb.targets [:Clean, :Build]
