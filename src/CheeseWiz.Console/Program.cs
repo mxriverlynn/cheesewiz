@@ -12,10 +12,11 @@ namespace CheeseWiz.Console
 	class Program
 	{
 
-		private static ILogger _logger = Log.For<Program>();
+		private static ILogger _logger;
 
 		static void Main(string[] args)
 		{
+			SetupLogger();
 			int returnCode = 0;
 			try
 			{
@@ -36,6 +37,13 @@ namespace CheeseWiz.Console
 				returnCode = -1;
 			}
 			Environment.Exit(returnCode);
+		}
+
+		private static void SetupLogger()
+		{
+			if (File.Exists("log4net.config"))
+				Log.InitializeUsing("log4net.config");
+			_logger = Log.For<Program>();
 		}
 
 		private static bool ValidateArgs(ICollection<string> args)
