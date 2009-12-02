@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using CheeseWiz.InfModel;
 using CheeseWiz.InfParsing;
 using CheeseWiz.InfRepairing;
@@ -41,8 +42,10 @@ namespace CheeseWiz.Console
 
 		private static void SetupLogger()
 		{
-			if (File.Exists("log4net.config"))
-				Log.InitializeUsing("log4net.config");
+			FileInfo asm = new FileInfo(Assembly.GetExecutingAssembly().Location);
+			string config = Path.Combine(asm.Directory.FullName, "log4net.config");
+			if (File.Exists(config))
+				Log.InitializeUsing(config);
 			_logger = Log.For<Program>();
 		}
 
