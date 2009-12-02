@@ -25,6 +25,7 @@ namespace CheeseWiz.Console
 					return;
 
 				string infFile = args[0];
+				SetCurrentFolder(infFile);
 
 				string infContents = ReadInfFile(infFile);
 				Inf inf = ParseInfFile(infContents);
@@ -38,6 +39,13 @@ namespace CheeseWiz.Console
 				returnCode = -1;
 			}
 			Environment.Exit(returnCode);
+		}
+
+		private static void SetCurrentFolder(string infFile)
+		{
+			FileInfo fileInfo = new FileInfo(infFile);
+			_logger.Debug("Changing Working Folder To: " + fileInfo.Directory.FullName);
+			Environment.CurrentDirectory = fileInfo.Directory.FullName;
 		}
 
 		private static void SetupLogger()

@@ -1,3 +1,4 @@
+using System;
 using CheeseWiz.InfModel;
 using CheeseWiz.InfParsing;
 using CheeseWiz.InfRepairing;
@@ -102,9 +103,9 @@ namespace CheeseWiz.Specs
 			}
 
 			[Test]
-			public void it_should_contain_the_FilesCommon1_section()
+			public void it_should_contain_the_Files_section()
 			{
-				infContents.ShouldContain("[Files.Common1]");
+				infContents.ShouldContain("[Files]");
 			}
 
 			[Test]
@@ -126,5 +127,6 @@ namespace CheeseWiz.Specs
 			}
 
 		}
+
 	}
 }

@@ -1,7 +1,7 @@
 require 'albacore'
 
 @output_path = File.expand_path(File.join(File.dirname(__FILE__), "build"))
-
+@config = environment = ENV['config'] || "Release"
 
 desc "Build and test CheeseWiz"
 task :default => [:assemblyinfo, :msbuild, :nunit]
@@ -13,7 +13,7 @@ Albacore::MSBuildTask.new(:msbuild) do |msb|
 	Dir.mkdir(@output_path) unless File.exists?(@output_path)
 	
 	msb.properties = {
-		:configuration => :Release,
+		:configuration => @config,
 		:OutputPath => @output_path
 	}
 	msb.targets [:Clean, :Build]

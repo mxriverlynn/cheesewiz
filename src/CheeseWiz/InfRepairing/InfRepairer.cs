@@ -22,9 +22,11 @@ namespace CheeseWiz.InfRepairing
 
 				ResourceFolder resourceFolder = inf.SourceDisksNames.GetFolderByReferenceNumber(resourceFile.ReferenceNumber);
 				SourceFile renamedFile = ResourceFileProcessor.RenameFile(resourceFolder.FolderName, resourceFile);
+
+				_logger.Info("Looking For File Resource Name: " + resourceFolder.ResourceName);
 				FileSection fileSection = inf.Files[resourceFolder.ResourceName];
 
-				_logger.Debug("Renaming '" + resourceFile.Filename + "' to '" + renamedFile.Filename + "'");
+				_logger.Debug("Renamed '" + resourceFile.Filename + "' to '" + renamedFile.Filename + "'");
 				fileSection.RenameFileSource(resourceFile.Filename, renamedFile.Filename);
 				inf.SourceDisksFiles.RenameFile(resourceFile.ReferenceNumber, renamedFile.Filename);
 			}

@@ -1,3 +1,4 @@
+using System;
 using CheeseWiz.InfModel;
 using CheeseWiz.InfParsing;
 using CheeseWiz.InfRepairing;
@@ -70,8 +71,46 @@ namespace CheeseWiz.Specs
 			[Test]
 			public void it_should_adjust_the_file_destinations()
 			{
-				inf.Files["Common2"].Content.ShouldContain("\"CheeseWiz.CFApp.resources.dll\",\"CheeseWiz.CFApp.es.resources.dll\",,0");
+				inf.Files["Files.Common2"].Content.ShouldContain("\"CheeseWiz.CFApp.resources.dll\",\"CheeseWiz.CFApp.es.resources.dll\",,0");
 			}
 		}
+
+		public class when_requesting_a_file_section_that_does_not_exist : under.the_default_context
+		{
+
+			Exception caughtException;
+
+			protected override void When()
+			{
+				try
+				{
+					FileSection section = inf.Files["I dont exist"];
+				}
+				catch (Exception ex)
+				{
+					caughtException = ex;
+				}
+			}
+
+			[Test]
+			public void it_should_throw_an_exception()
+			{
+				caughtException.ShouldNotBeNull();
+			}
+
+			[Test]
+			public void the_exception_should_contain_the_requested_section_name()
+			{
+				caughtException.Message.ShouldContain("I dont exist");
+			}
+
+			[Test]
+			public void the_exception_should_contain_the_list_of_file_sections()
+			{
+				caughtException.Message.ShouldContain("Files;");
+				caughtException.Message.ShouldContain("Files.Common2;");
+			}
+		}
+
 	}
 }
