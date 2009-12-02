@@ -14,6 +14,7 @@ namespace CheeseWiz.Console
 	{
 
 		private static ILogger _logger;
+		private static string _originaDir;
 
 		static void Main(string[] args)
 		{
@@ -38,15 +39,28 @@ namespace CheeseWiz.Console
 				_logger.Error(ex);
 				returnCode = -1;
 			}
+			finally
+			{
+				ResetCurrentFolder();
+			}
 			Environment.Exit(returnCode);
+		}
+
+		private static void ResetCurrentFolder()
+		{
+			if (!string.IsNullOrEmpty(_originaDir))
+				Environment.CurrentDirectory = _originaDir;
 		}
 
 		private static void SetCurrentFolder(string infFile)
 		{
+			_originaDir = Environment.CurrentDirectory;
 			FileInfo fileInfo = new FileInfo(infFile);
 			_logger.Debug("Changing Working Folder To: " + fileInfo.Directory.FullName);
 			Environment.CurrentDirectory = fileInfo.Directory.FullName;
 		}
+
+
 
 		private static void SetupLogger()
 		{
