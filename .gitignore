@@ -8,6 +8,8 @@ _ReSharper.*
 *.cache
 ~$*
 *.tmp
+*.*~
+*.swp
 build
 codecoverage
 src/VersionInfo.cs

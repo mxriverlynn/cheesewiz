@@ -1,29 +1,33 @@
+require 'rubygems'
+gem 'albacore', '=0.2.0.preview1'
 require 'albacore'
 
 @output_path = File.expand_path(File.join(File.dirname(__FILE__), "build"))
 @config = environment = ENV['config'] || "Release"
 
+Albacore.configure do |config|
+  config.log_level = :verbose
+  config.msbuild.use :net35
+  config.nunit.command = "Tools/NUnit-v2.5/nunit-console.exe"
+end
+
 desc "Build and test CheeseWiz"
 task :default => [:assemblyinfo, :msbuild, :nunit]
 
 desc "Build the CheeseWiz app"
-msbuildtask do |msb|
-	msb.log_level = :verbose
-	
+msbuild do |msb|
 	Dir.mkdir(@output_path) unless File.exists?(@output_path)
 	
-	msb.properties = {
+	msb.properties(
 		:configuration => @config,
 		:OutputPath => @output_path
-	}
-	msb.targets [:Clean, :Build]
+	)
+	msb.targets :Clean, :Build
 	msb.solution = "src/CheeseWiz.sln"
 end
 
 desc "Run a sample assembly info generator"
-assemblyinfotask do |asm|
-	asm.log_level = :verbose
-	
+assemblyinfo do |asm|
 	asm.version = "0.0.0.1"
 	asm.company_name = "TrackAbout, Inc."
 	asm.product_name = "CheeseWiz"
@@ -34,9 +38,7 @@ assemblyinfotask do |asm|
 end
 
 desc "NUnit Test Runner Example"
-nunittask do |nunit|
-	nunit.log_level = :verbose
-	nunit.path_to_command = "Tools/NUnit-v2.5/nunit-console.exe"
-	nunit.assemblies << File.join(@output_path, "CheeseWiz.Specs.dll")
+nunit do |nunit|
+	nunit.assemblies File.join(@output_path, "CheeseWiz.Specs.dll")
 end
 

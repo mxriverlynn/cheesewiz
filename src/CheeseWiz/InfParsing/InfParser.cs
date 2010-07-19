@@ -8,12 +8,12 @@ namespace CheeseWiz.InfParsing
 {
 	public class InfParser
 	{
-		private readonly ILogger _logger;
+		private readonly ILogger Logger;
 		private readonly IDictionary<string, IInfSectionParser> registeredInfSectionParsers = new Dictionary<string, IInfSectionParser>();
 
 		public InfParser(ILogger logger)
 		{
-			_logger = logger;
+			Logger = logger;
 			ConfigureInfSectionParsers();
 		}
 
@@ -50,7 +50,7 @@ namespace CheeseWiz.InfParsing
 			else
 				parser = new GenericSectionParser();
 
-			_logger.Debug("Handling INF Section [" + section.Section + "] With Section Parser '" + parser.GetType().Name + "'");
+			Logger.Debug("Handling INF Section [" + section.Section + "] With Section Parser '" + parser.GetType().Name + "'");
 
 			return parser;
 		}
@@ -66,7 +66,7 @@ namespace CheeseWiz.InfParsing
 				string section = splitContents[i];
 				string content = splitContents[i + 1];
 
-				_logger.Debug("Found INF Section: " + section);
+				Logger.Debug("Found INF Section: " + section);
 
 				var infSection = new InfSection(section, content);
 				infSections.Add(infSection);
@@ -77,7 +77,7 @@ namespace CheeseWiz.InfParsing
 		private void ConfigureInfSectionParsers()
 		{
 			registeredInfSectionParsers[InfSections.SourceDisksNames.ToString()] = new SourceDisksNamesParser();
-			registeredInfSectionParsers[InfSections.SourceDisksFiles.ToString()] = new SourceDisksFilesParser();
+			registeredInfSectionParsers[InfSections.SourceDisksFiles.ToString()] = new SourceDisksFilesParser(Logger);
 			registeredInfSectionParsers[InfSections.Files.ToString()] = new FilesParser();
 		}
 	}
