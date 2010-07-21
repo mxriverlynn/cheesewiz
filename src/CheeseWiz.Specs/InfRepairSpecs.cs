@@ -11,41 +11,6 @@ namespace CheeseWiz.Specs
 {
 	public class InfRepairSpecs
 	{
-		public static class under
-		{
-			public abstract class the_default_context: ContextSpecification
-			{
-				protected InfRepairer SUT;
-				protected IResourceFileProcessor resourceFileProcessor;
-				protected Inf inf;
-
-				protected override void EstablishContext()
-				{
-					inf = GetInf();
-					resourceFileProcessor = GetResourceFileProcessor();
-					ILogger logger = Mock<ILogger>();
-					SUT = new InfRepairer(resourceFileProcessor, logger);
-				}
-
-				private IResourceFileProcessor GetResourceFileProcessor()
-				{
-					var processor = Mock<IResourceFileProcessor>();
-					processor.Stub(p => p.RenameFile(null, null))
-						.IgnoreArguments()
-						.Return(new SourceFile("CheeseWiz.CFApp.es.resources.dll", "2"))
-						.Repeat.Once();
-					return processor;
-				}
-
-				private Inf GetInf()
-				{
-					ILogger logger = Mock<ILogger>();
-					var parser = new InfParser(logger);
-					return parser.Parse(SampleInfContents.Sample);
-				}
-			}
-		}
-
 		public class when_repairing_the_localized_resource_file_references : under.the_default_context
 		{
 			protected override void When()
@@ -112,5 +77,60 @@ namespace CheeseWiz.Specs
 			}
 		}
 
+		public class when_repairing_a_file_that_is_named_correctly : under.the_default_context
+		{
+			protected override Inf GetInf()
+			{
+				ILogger logger = Mock<ILogger>();
+				var parser = new InfParser(logger);
+				return parser.Parse(SampleInfContents.SampleWithProperlyNamedFiles);
+			}
+
+			protected override void When()
+			{
+				SUT.Repair(inf);
+			}
+
+			[Test]
+			public void it_should_not_rename_the_file()
+			{
+				resourceFileProcessor.AssertWasNotCalled(fp => fp.RenameFile(Arg<string>.Is.Anything, Arg<SourceFile>.Is.Anything));
+			}
+		}
+
+		public static class under
+		{
+			public abstract class the_default_context : ContextSpecification
+			{
+				protected InfRepairer SUT;
+				protected IResourceFileProcessor resourceFileProcessor;
+				protected Inf inf;
+
+				protected override void EstablishContext()
+				{
+					inf = GetInf();
+					resourceFileProcessor = GetResourceFileProcessor();
+					ILogger logger = Mock<ILogger>();
+					SUT = new InfRepairer(resourceFileProcessor, logger);
+				}
+
+				private IResourceFileProcessor GetResourceFileProcessor()
+				{
+					var processor = Mock<IResourceFileProcessor>();
+					processor.Stub(p => p.RenameFile(null, null))
+						.IgnoreArguments()
+						.Return(new SourceFile("CheeseWiz.CFApp.es.resources.dll", "2"))
+						.Repeat.Once();
+					return processor;
+				}
+
+				protected virtual Inf GetInf()
+				{
+					ILogger logger = Mock<ILogger>();
+					var parser = new InfParser(logger);
+					return parser.Parse(SampleInfContents.Sample);
+				}
+			}
+		}
 	}
 }
