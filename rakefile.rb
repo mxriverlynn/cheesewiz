@@ -1,5 +1,4 @@
 require 'rubygems'
-gem 'albacore', '=0.2.0.preview1'
 require 'albacore'
 
 @output_path = File.expand_path(File.join(File.dirname(__FILE__), "build"))
